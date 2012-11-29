@@ -89,3 +89,21 @@ title(main='Original Data')
 plot(rowDataAdjust_vect1, asp =1, xlim=c(-4,4), ylim=c(-4,4),
      xlab='x', ylab='y', frame=FALSE, pch=19)
 title(main='Original Data from the 1st PC')
+
+##############################################################
+
+#use built-in R function
+pca_data <- prcomp(data)
+#get the Eigen vectors, i.e,PC1 and PC2
+EigVects <- pca_data$rotation
+#get the Eigen values
+EigVals <- (pca_data$sdev)^2
+#make the scree plot
+plot(pca_data, main="Variance Explained by PCA")
+
+#make the score plot, plot the data in terms of PC1 and PC2
+plot(pca_data$x[,1], pca_data$x[,2], xlim=c(-2,2), ylim=c(-3,3), pch=19)
+abline(h=0,lty="dotted")
+
+names(pca_data)
+
